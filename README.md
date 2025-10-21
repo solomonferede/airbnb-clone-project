@@ -240,3 +240,56 @@ This feature ensures high performance and scalability, even under heavy user tra
 The entire backend system is containerized using **Docker**, ensuring consistent development and deployment environments.  
 Automated **CI/CD pipelines** are implemented to run tests and deploy updates efficiently.  
 This feature enhances reliability, reduces manual errors, and enables continuous improvement of the platform.
+
+## 🛡️ API Security
+
+Security is a critical part of this project to protect user data, maintain trust, and prevent unauthorized access.  
+The following key measures will be implemented to ensure a secure backend system:
+
+### 🔐 1. Authentication
+
+Every user must log in using secure credentials (email/password) or OAuth (Google, etc.).  
+**Implementation:** JSON Web Tokens (JWT) will be used to verify user sessions, sent in request headers for all protected routes.  
+**Purpose:** Ensures only legitimate users can access personal accounts or perform sensitive operations such as bookings and payments.
+
+---
+
+### 🧩 2. Authorization
+
+Controls what actions a user can perform based on their role (e.g., Admin, Property Owner, Customer).  
+**Implementation:** Role-Based Access Control (RBAC) will be applied to restrict routes and data resources.  
+**Purpose:** Prevents users from accessing or modifying data they don’t own — for example, a user cannot manage another user’s property or bookings.
+
+---
+
+### 🔒 3. Data Encryption
+
+Sensitive information such as passwords and payment details will be encrypted before storage or transmission.  
+**Implementation:** Passwords will be hashed using **bcrypt**, and HTTPS will be enforced for all communications.  
+**Purpose:** Protects confidential data even if a database breach or network interception occurs.
+
+---
+
+### ⚙️ 4. Rate Limiting
+
+Limits the number of requests a client can make within a specific time period.  
+**Implementation:** Middleware such as **express-rate-limit** will be used to prevent brute-force and denial-of-service (DoS) attacks.  
+**Purpose:** Prevents system overload and malicious access attempts.
+
+---
+
+### 🧼 5. Input Validation and Sanitization
+
+Ensures all incoming user data is properly validated and sanitized.  
+**Implementation:** Libraries like **Joi** or **Validator.js** will be used to prevent injection attacks (e.g., SQL Injection, XSS).  
+**Purpose:** Protects the system from harmful or malformed inputs that could compromise security.
+
+---
+
+### 💳 6. Secure Payments
+
+All payment transactions will be processed through trusted third-party payment gateways (e.g., Stripe, PayPal).  
+**Implementation:** Use encrypted communication and tokenized transactions for all financial operations.  
+**Purpose:** Ensures sensitive payment data is never directly handled or stored by the server.
+
+---
