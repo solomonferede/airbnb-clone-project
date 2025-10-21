@@ -293,3 +293,22 @@ All payment transactions will be processed through trusted third-party payment g
 **Purpose:** Ensures sensitive payment data is never directly handled or stored by the server.
 
 ---
+
+## ⚡ CI/CD Pipeline
+
+Continuous Integration (CI) and Continuous Deployment/Delivery (CD) are practices that automate the process of testing, building, and deploying code.  
+A **CI/CD pipeline** ensures that code changes are automatically tested and deployed in a consistent, reliable, and efficient manner.
+
+**Importance for the Project:**
+
+- **Automated Testing:** Ensures that every code change is tested before merging, reducing bugs and improving quality.
+- **Faster Deployment:** Updates can be deployed automatically without manual intervention, enabling frequent releases.
+- **Consistency:** Guarantees that the application runs the same way in development, staging, and production environments.
+- **Collaboration:** Helps multiple developers work together safely by integrating changes continuously.
+
+**Tools That Can Be Used:**
+
+- **GitHub Actions:** Automates workflows for testing, building, and deploying the project.
+- **Docker:** Provides consistent containerized environments for development and deployment.
+- **Celery + Redis:** For background tasks and asynchronous processing during deployment or build pipelines.
+- **PostgreSQL:** Ensures database migrations and updates are smoothly integrated in CI/CD workflows.
