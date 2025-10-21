@@ -171,3 +171,72 @@ Stores feedback and ratings from users about properties.
 ---
 
 The relational structure ensures data integrity and supports efficient queries through foreign key relationships and indexing strategies.
+
+## ✨ Feature Breakdown
+
+This section outlines the main features of the Airbnb Clone backend system.  
+Each feature is designed to deliver a seamless user experience while ensuring scalability, security, and performance.
+
+---
+
+### **1. User Management**
+
+Implements a secure system for user registration, authentication, and profile management.  
+Users can sign up, log in, update their profiles, and manage their listings or bookings depending on their role (host or guest).  
+This feature ensures account security through authentication mechanisms and role-based access control.
+
+---
+
+### **2. Property Management**
+
+Allows hosts to create, update, and manage their property listings.  
+Each property includes essential details such as title, description, price, and address (city, state, and country) to support location-based searches.  
+This feature ensures hosts can easily manage accommodations while guests can browse available listings efficiently.
+
+---
+
+### **3. Booking System**
+
+Enables guests to reserve properties, manage booking details, and track check-in/check-out dates.  
+The system prevents overlapping bookings and maintains accurate availability status for each property.  
+This feature provides the foundation for all reservation-related activities in the platform.
+
+---
+
+### **4. Payment Processing**
+
+Handles secure payment transactions associated with bookings.  
+Integrates payment gateways to process and record successful transactions, ensuring that both hosts and guests have transparent financial tracking.  
+This feature also supports payment status updates such as pending, confirmed, or failed.
+
+---
+
+### **5. Review System**
+
+Allows guests to leave reviews and ratings for properties they’ve stayed in.  
+Hosts can receive feedback that helps improve their service quality, while future guests can make informed booking decisions.  
+This feature enhances trust and credibility within the platform’s user community.
+
+---
+
+### **6. API Documentation**
+
+All REST and GraphQL endpoints are documented using the **OpenAPI** standard.  
+This ensures developers and testers can easily understand, integrate, and test backend services without ambiguity.  
+The documentation promotes collaboration and reduces onboarding time for new developers.
+
+---
+
+### **7. Database Optimization**
+
+Optimizes data retrieval and performance using **indexing** and **caching** strategies.  
+Frequently accessed data (like property listings or user profiles) is cached using **Redis** to reduce database load.  
+This feature ensures high performance and scalability, even under heavy user traffic.
+
+---
+
+### **8. CI/CD and Dockerized Environment**
+
+The entire backend system is containerized using **Docker**, ensuring consistent development and deployment environments.  
+Automated **CI/CD pipelines** are implemented to run tests and deploy updates efficiently.  
+This feature enhances reliability, reduces manual errors, and enables continuous improvement of the platform.
