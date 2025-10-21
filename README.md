@@ -51,3 +51,123 @@ A containerization tool that packages the application and its dependencies into 
 ### **CI/CD Pipelines**
 
 Automated Continuous Integration and Continuous Deployment pipelines are used to test, build, and deploy code changes efficiently. They help maintain code quality, speed up releases, and minimize human error during deployment.
+
+## 🗄️ Database Design
+
+The database is designed using **PostgreSQL** to store and manage all application data efficiently.  
+It follows a **relational model** to maintain data integrity and ensure efficient querying.  
+Below are the key entities and their relationships.
+
+---
+
+### **1. Users**
+
+Represents all registered users in the system — both hosts and guests.
+
+**Key Fields:**
+
+- `id` – Unique identifier for each user.
+- `username` – User’s unique login name.
+- `email` – User’s email address for authentication and notifications.
+- `password` – Encrypted password for account security.
+- `role` – Defines whether the user is a _host_ or _guest_.
+
+**Relationships:**
+
+- A **user** can list multiple **properties** (as a host).
+- A **user** can make multiple **bookings** (as a guest).
+- A **user** can leave multiple **reviews**.
+
+---
+
+### **2. Properties**
+
+Represents property listings created by hosts.
+
+**Key Fields:**
+
+- `id` – Unique identifier for the property.
+- `title` – Name or title of the property listing.
+- `description` – Detailed description of the property.
+- `price_per_night` – Cost of booking per night.
+- `host_id` – References the **User** who owns the property.
+
+**Relationships:**
+
+- A **property** belongs to one **user** (the host).
+- A **property** can have many **bookings**.
+- A **property** can have many **reviews**.
+
+---
+
+### **3. Bookings**
+
+Tracks reservations made by guests for specific properties.
+
+**Key Fields:**
+
+- `id` – Unique identifier for each booking.
+- `user_id` – References the **User** who made the booking.
+- `property_id` – References the **Property** being booked.
+- `check_in` – Start date of the booking.
+- `check_out` – End date of the booking.
+- `status` – Current status (e.g., pending, confirmed, canceled).
+
+**Relationships:**
+
+- A **booking** belongs to one **user** (guest).
+- A **booking** belongs to one **property**.
+- A **booking** may have one related **payment** record.
+
+---
+
+### **4. Payments**
+
+Records all transactions related to bookings.
+
+**Key Fields:**
+
+- `id` – Unique identifier for each payment.
+- `booking_id` – References the **Booking** associated with the payment.
+- `amount` – Total amount paid for the booking.
+- `payment_method` – Method used (e.g., credit card, PayPal).
+- `status` – Status of payment (e.g., success, failed, pending).
+
+**Relationships:**
+
+- A **payment** belongs to one **booking**.
+- Each **booking** has one **payment** record.
+
+---
+
+### **5. Reviews**
+
+Stores feedback and ratings from users about properties.
+
+**Key Fields:**
+
+- `id` – Unique identifier for each review.
+- `user_id` – References the **User** who wrote the review.
+- `property_id` – References the **Property** being reviewed.
+- `rating` – Numeric rating (e.g., 1–5).
+- `comment` – Textual feedback from the user.
+
+**Relationships:**
+
+- A **review** belongs to one **user**.
+- A **review** belongs to one **property**.
+
+---
+
+### **Entity Relationships Summary**
+
+- **User ↔ Property:** One-to-Many (a user can own many properties).
+- **User ↔ Booking:** One-to-Many (a user can make many bookings).
+- **Property ↔ Booking:** One-to-Many (a property can have many bookings).
+- **Booking ↔ Payment:** One-to-One (each booking has one payment).
+- **Property ↔ Review:** One-to-Many (a property can have many reviews).
+- **User ↔ Review:** One-to-Many (a user can write multiple reviews).
+
+---
+
+The relational structure ensures data integrity and supports efficient queries through foreign key relationships and indexing strategies.
