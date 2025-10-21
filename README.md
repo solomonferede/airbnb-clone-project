@@ -312,3 +312,19 @@ A **CI/CD pipeline** ensures that code changes are automatically tested and depl
 - **Docker:** Provides consistent containerized environments for development and deployment.
 - **Celery + Redis:** For background tasks and asynchronous processing during deployment or build pipelines.
 - **PostgreSQL:** Ensures database migrations and updates are smoothly integrated in CI/CD workflows.
+
+### ⚡ CI/CD Pipeline Flow
+
+```mermaid
+flowchart LR
+    A[Developer Pushes Code] --> B[CI: Automated Tests]
+    B --> C{Tests Passed?}
+    C -->|No| D[Report Errors to Developer]
+    C -->|Yes| E[Build Docker Image]
+    E --> F[Deploy to Staging Environment]
+    F --> G[Run Integration & Acceptance Tests]
+    G --> H{Tests Passed?}
+    H -->|No| I[Report Issues & Rollback]
+    H -->|Yes| J[Deploy to Production Environment]
+    J --> K[Live Application Updated]
+```
